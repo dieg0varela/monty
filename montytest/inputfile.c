@@ -26,7 +26,7 @@ int main(void)
 {
 	int fd = open("./test.m", O_RDONLY);
 	char content[1024];
-	int continue = 0
+	int conti = 0;
 	char *word;
 	int i= 0;
 	int j = 0;
@@ -45,7 +45,7 @@ int main(void)
 	word = strtok(content, " \n");
 	for (j = 1; j <= strings ; j++)
 	{
-		continue = 0
+		conti = 0;
 		while (arr[i].op != NULL)
 		{
 			if (strcmp(word, arr[i].op) == 0)
@@ -56,13 +56,25 @@ int main(void)
 			i++;
 		}
 		i = 0;
-		
-		word = strtok(NULL, " \n");
-		while (continue == 0)
+		if (j != strings)
 		{
-			
+			word = strtok(NULL, " \n");
+			while (conti == 0)
+			{
+				while (arr[i].op != NULL)
+				{
+					if (strcmp(word, arr[i].op) == 0)
+					{
+						conti = 1;
+						break;
+					}
+					i++;
+				}
+				if (conti == 0)
+					word = strtok(NULL, " \n");
+				i = 0;
+			}
 		}
-		printf("HHH: %s\n", word);
 	}
 	
 
