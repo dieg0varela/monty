@@ -15,11 +15,11 @@ void logic(char *sentence, int line)
 	instruction_t arr[] = {
 		{"push", push}, {"pall", pall}, {NULL, NULL}
 	};
-	if(sentence)
+	if (sentence)
 		word = strtok(sentence, " \n");
 	if (!word)
 		return;
-	if(word[0] == '#' || strcmp(word,"\n") == 0)
+	if (word[0] == '#' || strcmp(word, "\n") == 0)
 	{
 		return;
 	}
@@ -33,7 +33,7 @@ void logic(char *sentence, int line)
 		}
 		i++;
 	}
-	if(arr[i].opcode == NULL)
+	if (arr[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%i: unknown instruction %s\n", line, word);
 		free_dlistint(monty.stack);
@@ -51,32 +51,32 @@ void logic(char *sentence, int line)
  *
  */
 
-int main(int argc, char**argv)
+int main(int argc, char **argv)
 {
 	int i = 0;
 	char sentence[1024];
 	char *file, *res;
 
-	if(argc != 2)
+	if (argc != 2)
 	{
-		fprintf(stderr,"USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	file = argv[1];
 	monty.fp = fopen(file, "r");
-	if(monty.fp == NULL)
+	if (monty.fp == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", file);
 		exit(EXIT_FAILURE);
 	}
 	res = fgets(sentence, 1024, monty.fp);
-	for (i = 1 ; res != NULL ; i++ )
+	for (i = 1 ; res != NULL ; i++)
 	{
 		if (strcmp(sentence, "\n") != 0)
 			logic(sentence, i);
 		res = fgets(sentence, 1024, monty.fp);
 	}
-	if(monty.stack)
+	if (monty.stack)
 		free_dlistint(monty.stack);
 	fclose(monty.fp);
 	return (0);
