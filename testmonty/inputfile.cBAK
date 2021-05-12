@@ -3,6 +3,13 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
+typedef struct op
+	{	
+		char *op;
+		void (*f)(int a);
+	} op_t;
+
 void print_push(int i)
 {
 	printf("Push : %d\n", i);
@@ -10,6 +17,17 @@ void print_push(int i)
 void print_pall(int i)
 {
 	printf("Pall : %i\n", i);
+}
+int isNum(char *num)
+{
+	int pos = 0;
+
+	for(pos = 0 ; num[pos] != '\0' ; pos++)
+	{
+		if(isdigit(num[pos]) == 0)
+			return (0);
+	}
+	return (1);
 }
 int count_sep(char *str, char sep)
 {
@@ -22,26 +40,15 @@ int count_sep(char *str, char sep)
 	}
 	return (count);
 }
-int main(void)
+void logic(char *content, int strings)
 {
-	int fd = open("./test.m", O_RDONLY);
-	char content[1024];
-	int conti = 0;
 	char *word;
-	int i= 0;
-	int j = 0;
-	int strings = 0;
-	typedef struct op
-	{	
-		char *op;
-		void (*f)(int a);
-	} op_t;
-
+	int j = 0, i = 0, conti = 0;
 	op_t arr[] = {
 		{"push", print_push}, {"pall", print_pall}, {NULL, NULL}
 	};
-	read(fd, content, 1024);
-	strings = count_sep(content,'\n');
+
+
 	word = strtok(content, " \n");
 	for (j = 1; j <= strings ; j++)
 	{
@@ -51,10 +58,15 @@ int main(void)
 			if (strcmp(word, arr[i].op) == 0)
 			{
 				word = strtok(NULL, " \n");
+				if(!isNum(word))
+					printf("ERROR AQUI");
 				arr[i].f(atoi(word));
+				break;
 			}
 			i++;
 		}
+		if(arr[i].op == NULL)
+			printf("ERROR AQUI");
 		i = 0;
 		if (j != strings)
 		{
@@ -76,6 +88,17 @@ int main(void)
 			}
 		}
 	}
+}
+int main(void)
+{
+	int fd = open("./test.m", O_RDONLY);
+	char content[1024];
+	int strings = 0;
+
+	
+	read(fd, content, 1024);
+	strings = count_sep(content,'\n');
+	logic(content, strings);
 	
 
 	return (0);

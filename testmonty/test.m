@@ -1,3 +1,5 @@
        push        30       fdsfsdf  dawdawdad  wqd d awd
-pall 5
+pall mem
 push 42342
+hola
+push
