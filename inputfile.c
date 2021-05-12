@@ -36,6 +36,8 @@ void logic(char *sentence, int line)
 	if(arr[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%i: unknown instruction %s\n", line, word);
+		if(monty.res)
+			free(monty.res);
 		free_dlistint(monty.stack);
 		exit(EXIT_FAILURE);
 	}
@@ -55,7 +57,7 @@ int main(int argc, char**argv)
 	FILE *fp;
 	int i = 0;
 	char sentence[1024];
-	char *res, *file;
+	char *file;
 
 	if(argc != 2)
 	{
@@ -69,17 +71,17 @@ int main(int argc, char**argv)
 		fprintf(stderr, "Error: Can't open file %s\n", file);
 		exit(EXIT_FAILURE);
 	}
-	res = fgets(sentence, 1024, fp);
-	for (i = 1 ; res != NULL ; i++ )
+	monty.res = fgets(sentence, 1024, fp);
+	for (i = 1 ; monty.res != NULL ; i++ )
 	{
 		if (strcmp(sentence, "\n") != 0)
 			logic(sentence, i);
-		res = fgets(sentence, 1024, fp);
+		monty.res = fgets(sentence, 1024, fp);
 	}
 	if(monty.stack)
 		free_dlistint(monty.stack);
-	if(res)
-		free(res);
+	if(monty.res)
+		free(monty.res);
 	fclose(fp);
 
 	return (0);
