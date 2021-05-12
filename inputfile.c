@@ -37,6 +37,8 @@ void logic(char *sentence, int line)
 	{
 		fprintf(stderr, "L%i: unknown instruction %s\n", line, word);
 		free_dlistint(monty.stack);
+		if(monty.res)
+			free(monty.res);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -78,6 +80,8 @@ int main(int argc, char**argv)
 	}
 	if(monty.stack)
 		free_dlistint(monty.stack);
+	if(monty.res)
+                free(monty.res);
 	fclose(fp);
 	return (0);
 }
