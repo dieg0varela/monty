@@ -20,11 +20,11 @@ void swap(stack_t **stack, unsigned int line_number)
 	}
 	if ((*stack)->next == NULL)
 	{
-                fprintf(stderr, "L%i: can't swap, stack too short\n", line_number);
-                free_dlistint(monty.stack);
-                fclose(monty.fp);
-                exit(EXIT_FAILURE);
-        }
+		fprintf(stderr, "L%i: can't swap, stack too short\n", line_number);
+		free_dlistint(monty.stack);
+		fclose(monty.fp);
+		exit(EXIT_FAILURE);
+	}
 	temp = *stack;
 	while (temp->next != NULL)
 		temp = temp->next;
@@ -32,5 +32,4 @@ void swap(stack_t **stack, unsigned int line_number)
 	temp->next = temp->prev;
 	temp->prev = temp->prev->prev;
 	temp->prev->prev = temp;
-
 }
