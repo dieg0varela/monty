@@ -1,15 +1,21 @@
 #include "monty.h"
+/**
+ * isNum - checks if a string is number or not
+ * @num: pointer to char
+ *
+ * Return: 1 if not, 0 if true.
+ */
 
 int isNum(char *num)
 {
-        int pos = 0;
+	int pos = 0;
 
-        for(pos = 0 ; num[pos] != '\0' ; pos++)
-        {
-                if(isdigit(num[pos]) == 0)
-                        return (0);
-        }
-        return (1);
+	for (pos = 0 ; num[pos] != '\0' ; pos++)
+	{
+		if (isdigit(num[pos]) == 0)
+			return (0);
+	}
+	return (1);
 }
 
 /**
@@ -41,7 +47,7 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	new->n = atoi(monty.data);
 	new->next = NULL;
-	if((*stack) == NULL)
+	if ((*stack) == NULL)
 	{
 		new->prev = NULL;
 		*stack = new;
