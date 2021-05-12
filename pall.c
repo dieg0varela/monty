@@ -14,10 +14,12 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	if (stack)
 	{
 		temp = *stack;
+		while (temp->next != NULL)
+			temp = temp->next;
 		while (temp)
 		{
 			printf("%d\n", temp->n);
-			temp = temp->next;
+			temp = temp->prev;
 		}
 	}
 }
