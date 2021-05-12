@@ -1,8 +1,8 @@
 #include "monty.h"
-#include "data.h"
-char *data = NULL;
+monty_t monty;
+
 /*int isNum(char *num)
-{
+y{
 	int pos = 0;
 
 	for(pos = 0 ; num[pos] != '\0' ; pos++)
@@ -23,15 +23,14 @@ int count_sep(char *str, char sep)
 	}
 	return (count);
 }
-void logic(char *sentence, int line, stack_t **stack)
+void logic(char *sentence, int line, stack_t *stack)
 {
 	char *word;
 	int i = 0;
 	instruction_t arr[] = {
 		{"push", push}, {"pall", pall}, {NULL, NULL}
 	};
-	
-	
+	sentence[strlen(sentence) - 1] = '\0';
 	word = strtok(sentence, " ");
 	if(word[0] == '#' || strcmp(word, "\n") == 0 || word == NULL)
 	{
@@ -41,8 +40,8 @@ void logic(char *sentence, int line, stack_t **stack)
 		{
 			if (strcmp(word, arr[i].opcode) == 0)
 			{
-				data = strtok(NULL, " \n");
-				arr[i].f(stack, line);
+				monty.data = strtok(NULL, " \n");
+				arr[i].f(&monty.stack, line);
 				break;
 			}
 			i++;
@@ -59,8 +58,8 @@ int main(int argc, char**argv)
 	int i = 0;
 	char sentence[1024];
 	char *res, *file;
-	stack_t *stack;
-	
+	stack_t *stack = NULL;
+
 	if(argc != 2)
 	{
 		fprintf(stderr,"USAGE: monty file\n");
@@ -76,7 +75,7 @@ int main(int argc, char**argv)
 	res = fgets(sentence, 1024, fp);
 	for (i = 1 ; res != NULL ; i++ )
 	{
-		logic(sentence, i, &stack);
+		logic(sentence, i, stack);
 		res = fgets(sentence, 1024, fp);
 	}
 	free(res);

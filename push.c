@@ -1,5 +1,5 @@
 #include "monty.h"
-#include "data.h"
+
 int isNum(char *num)
 {
         int pos = 0;
@@ -21,10 +21,11 @@ int isNum(char *num)
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	printf("DATA: %s\n", data);
-	stack_t *new = NULL, *tmp = *stack;
+	stack_t *new = NULL, *tmp, *tmp2;
 
-	if (!data || !isNum(data))
+	tmp = *stack;
+	tmp2 = *stack;
+	if (!monty.data || !isNum(monty.data))
 	{
 		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -35,9 +36,9 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	new->n = atoi(data);
+	new->n = atoi(monty.data);
 	new->next = NULL;
-	if(*stack == NULL)
+	if((*stack) == NULL)
 	{
 		new->prev = NULL;
 		*stack = new;
