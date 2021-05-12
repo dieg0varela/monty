@@ -1,17 +1,12 @@
 #include "monty.h"
 monty_t monty;
 
-int count_sep(char *str, char sep)
-{
-	int count = 0, i = 0;
-
-	for (i = 0 ; str[i] != '\0' ; i++)
-	{
-		if (str[i] == sep)
-			count++;
-	}
-	return (count);
-}
+/**
+ * logic - Entry point
+ * @sentence: argument count
+ * @line: argument variables
+ *
+ */
 
 void logic(char *sentence, int line)
 {
@@ -41,7 +36,8 @@ void logic(char *sentence, int line)
 	if(arr[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%i: unknown instruction %s\n", line, word);
-			exit(EXIT_FAILURE);
+		free_dlistint(monty.stack);
+		exit(EXIT_FAILURE);
 	}
 }
 
