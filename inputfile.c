@@ -20,27 +20,29 @@ void logic(char *sentence, int line)
 	instruction_t arr[] = {
 		{"push", push}, {"pall", pall}, {NULL, NULL}
 	};
-	sentence[strlen(sentence) - 1] = '\0';
-	word = strtok(sentence, " ");
-	if(word[0] == '#' || strcmp(word, "\n") == 0 || word == NULL)
+	if(sentence)
+		word = strtok(sentence, " \n");
+	if (!word)
+		return;
+	if(word[0] == '#' || strcmp(word,"\n") == 0)
 	{
 		return;
 	}
-		while (arr[i].opcode != NULL)
+	while (arr[i].opcode != NULL)
+	{
+		if (strcmp(word, arr[i].opcode) == 0)
 		{
-			if (strcmp(word, arr[i].opcode) == 0)
-			{
-				monty.data = strtok(NULL, " \n");
-				arr[i].f(&monty.stack, line);
-				break;
-			}
-			i++;
+			monty.data = strtok(NULL, " \n");
+			arr[i].f(&monty.stack, line);
+			break;
 		}
-		if(arr[i].opcode == NULL)
-		{
-			fprintf(stderr, "L%i: unknown instruction %s", line, word);
+		i++;
+	}
+	if(arr[i].opcode == NULL)
+	{
+		fprintf(stderr, "L%i: unknown instruction %s", line, word);
 			exit(EXIT_FAILURE);
-		}
+	}
 }
 
 /**
@@ -74,10 +76,14 @@ int main(int argc, char**argv)
 	res = fgets(sentence, 1024, fp);
 	for (i = 1 ; res != NULL ; i++ )
 	{
-		logic(sentence, i);
+		if (strcmp(sentence, "\n") != 0)
+			logic(sentence, i);
 		res = fgets(sentence, 1024, fp);
 	}
-	free(res);
+	if(monty.stack)
+		free_dlistint(monty.stack);
+	if(res)
+		free(res);
 	fclose(fp);
 
 	return (0);
