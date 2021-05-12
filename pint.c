@@ -11,7 +11,7 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL;
 
-	if (!stack)
+	if (!stack || !*stack)
 	{
 		fprintf(stderr, "L%i: can't pint, stack empty\n", line_number);
 		free_dlistint(monty.stack);
