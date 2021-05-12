@@ -14,14 +14,12 @@ void push(stack_t **stack, unsigned int line_number)
 	if (!data || !isNum(data))
 	{
 		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
-		free(res);
 		exit(EXIT_FAILURE);
 	}
 	new = malloc(stack_t);
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free(res);
 		exit(EXIT_FAILURE);
 	}
 	new->n = data;
