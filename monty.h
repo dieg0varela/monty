@@ -46,7 +46,7 @@ typedef struct monty
 {
 	char *data;
 	stack_t *stack;
-	char *res;
+	FILE *fp;
 } monty_t;
 extern monty_t monty;
 

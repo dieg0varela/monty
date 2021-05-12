@@ -27,18 +27,16 @@ void push(stack_t **stack, unsigned int line_number)
 	if (!monty.data || !isNum(monty.data))
 	{
 		fprintf(stderr, "L%i: usage: push integer\n", line_number);
-		if(monty.res)
-			free(monty.res);
 		free_dlistint(monty.stack);
+		fclose(monty.fp);
 		exit(EXIT_FAILURE);
 	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		if(monty.res)
-			free(monty.res);
 		free_dlistint(monty.stack);
+		fclose(monty.fp);
 		exit(EXIT_FAILURE);
 	}
 	new->n = atoi(monty.data);
