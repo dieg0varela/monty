@@ -13,7 +13,8 @@ void logic(char *sentence, int line)
 	char *word;
 	int i = 0;
 	instruction_t arr[] = {
-		{"push", push}, {"pall", pall}, {"pint", pint}, {NULL, NULL}
+		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
+		{NULL, NULL}
 	};
 	if (sentence)
 		word = strtok(sentence, " \n");
