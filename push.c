@@ -1,4 +1,16 @@
 #include "monty.h"
+#include "data.h"
+int isNum(char *num)
+{
+        int pos = 0;
+
+        for(pos = 0 ; num[pos] != '\0' ; pos++)
+        {
+                if(isdigit(num[pos]) == 0)
+                        return (0);
+        }
+        return (1);
+}
 
 /**
  * push - opcode push, pushes an element to the stack
@@ -9,6 +21,7 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
+	printf("DATA: %s\n", data);
 	stack_t *new = NULL, *tmp = *stack;
 
 	if (!data || !isNum(data))

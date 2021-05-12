@@ -1,6 +1,7 @@
 #include "monty.h"
-
-int isNum(char *num)
+#include "data.h"
+char *data = NULL;
+/*int isNum(char *num)
 {
 	int pos = 0;
 
@@ -10,7 +11,7 @@ int isNum(char *num)
 			return (0);
 	}
 	return (1);
-}
+}*/
 int count_sep(char *str, char sep)
 {
 	int count = 0, i = 0;
@@ -40,7 +41,7 @@ void logic(char *sentence, int line, stack_t **stack)
 		{
 			if (strcmp(word, arr[i].opcode) == 0)
 			{
-				word = strtok(NULL, " \n");
+				data = strtok(NULL, " \n");
 				arr[i].f(stack, line);
 				break;
 			}
