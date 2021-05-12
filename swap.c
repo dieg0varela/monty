@@ -32,9 +32,20 @@ void swap(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 		temp2 = temp2->next;
 	}
-	temp->prev->next = temp2;
-	temp->next = NULL;
-	temp2->prev = temp->prev;
-	temp->prev = temp2;
-	temp2->next = temp;
+	if (temp->prev)
+	{
+		temp->prev->next = temp2;
+		temp->next = NULL;
+		temp2->prev = temp->prev;
+		temp->prev = temp2;
+		temp2->next = temp;
+	}
+	else
+	{
+		temp->prev = temp2;
+		temp2->next = temp;
+		temp2->prev = NULL;
+		temp->next = NULL;
+	}
+
 }
