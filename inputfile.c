@@ -1,23 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <string.h>
-#include <ctype.h>
-typedef struct op
-	{	
-		char *op;
-		void (*f)(int a);
-	} op_t;
+#include "monty.h"
 
-void print_push(int i)
-{
-	printf("Push : %d\n", i);
-}
-void print_pall(int i)
-{
-	printf("Pall : %i\n", i);
-}
 int isNum(char *num)
 {
 	int pos = 0;
@@ -40,31 +22,33 @@ int count_sep(char *str, char sep)
 	}
 	return (count);
 }
-void logic(char *sentence, int line)
+void logic(char *sentence, int line, stack_t **stack)
 {
 	char *word;
 	int i = 0;
-	op_t arr[] = {
-		{"push", print_push}, {"pall", print_pall}, {NULL, NULL}
+	instruction_t arr[] = {
+		{"push", push}, {"pall", pall}, {NULL, NULL}
 	};
-
-	word = strtok(sentence, " \n");
-		while (arr[i].op != NULL)
+	
+	
+	word = strtok(sentence, " ");
+	if(word[0] == '#' || strcmp(word, "\n") == 0 || word == NULL)
+	{
+		return;
+	}
+		while (arr[i].opcode != NULL)
 		{
-			if (strcmp(word, arr[i].op) == 0)
+			if (strcmp(word, arr[i].opcode) == 0)
 			{
 				word = strtok(NULL, " \n");
-				printf("WO: %s\n", word);
-				if(!isNum(word))
-					printf("ERROR AQUI");
-				arr[i].f(atoi(word));
+				arr[i].f(stack, line);
 				break;
 			}
 			i++;
 		}
-		if(arr[i].op == NULL)
+		if(arr[i].opcode == NULL)
 		{
-			fprintf(stderr, "L%i: unknown instruction %s\n", line, word);
+			fprintf(stderr, "L%i: unknown instruction %s", line, word);
 			exit(EXIT_FAILURE);
 		}
 }
@@ -74,6 +58,7 @@ int main(int argc, char**argv)
 	int i = 0;
 	char sentence[1024];
 	char *res, *file;
+	stack_t *stack;
 	
 	if(argc != 2)
 	{
@@ -90,10 +75,10 @@ int main(int argc, char**argv)
 	res = fgets(sentence, 1024, fp);
 	for (i = 1 ; res != NULL ; i++ )
 	{
-		logic(sentence, i);
-		printf("SE: %s\n", sentence);
+		logic(sentence, i, &stack);
 		res = fgets(sentence, 1024, fp);
 	}
+	free(res);
 	fclose(fp);
 
 	return (0);
