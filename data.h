@@ -1,6 +1,6 @@
 #ifndef DATA
 #define DATA
 
-extern int data;  /* Declaration of the variable */
+extern char *data[2];  /* Declaration of the variable */
 
 #endif /*ends DATA*/

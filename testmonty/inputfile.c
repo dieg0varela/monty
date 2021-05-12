@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
-#include <ctype.h>
 typedef struct op
 	{	
 		char *op;
@@ -94,7 +92,7 @@ int main(int argc, char**argv)
 		printf("SE: %s\n", sentence);
 		res = fgets(sentence, 1024, fp);
 	}
-	
+	fclose(fp);
 
 	return (0);
 }
