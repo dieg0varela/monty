@@ -40,21 +40,24 @@ int count_sep(char *str, char sep)
 	}
 	return (count);
 }
-void logic(char *sentence, int line)
+void logic(char *content, int strings)
 {
 	char *word;
-	int i = 0;
+	int j = 0, i = 0, conti = 0;
 	op_t arr[] = {
 		{"push", print_push}, {"pall", print_pall}, {NULL, NULL}
 	};
 
-	word = strtok(sentence, " \n");
+
+	word = strtok(content, " \n");
+	for (j = 1; j <= strings ; j++)
+	{
+		conti = 0;
 		while (arr[i].op != NULL)
 		{
 			if (strcmp(word, arr[i].op) == 0)
 			{
 				word = strtok(NULL, " \n");
-				printf("WO: %s\n", word);
 				if(!isNum(word))
 					printf("ERROR AQUI");
 				arr[i].f(atoi(word));
@@ -63,37 +66,39 @@ void logic(char *sentence, int line)
 			i++;
 		}
 		if(arr[i].op == NULL)
+			printf("ERROR AQUI");
+		i = 0;
+		if (j != strings)
 		{
-			fprintf(stderr, "L%i: unknown instruction %s\n", line, word);
-			exit(EXIT_FAILURE);
+			word = strtok(NULL, " \n");
+			while (conti == 0)
+			{
+				while (arr[i].op != NULL)
+				{
+					if (strcmp(word, arr[i].op) == 0)
+					{
+						conti = 1;
+						break;
+					}
+					i++;
+				}
+				if (conti == 0)
+					word = strtok(NULL, " \n");
+				i = 0;
+			}
 		}
+	}
 }
-int main(int argc, char**argv)
+int main(void)
 {
-	FILE *fp;
-	int i = 0;
-	char sentence[1024];
-	char *res, *file;
+	int fd = open("./test.m", O_RDONLY);
+	char content[1024];
+	int strings = 0;
+
 	
-	if(argc != 2)
-	{
-		fprintf(stderr,"USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-	file = argv[1];
-	fp = fopen(file, "r");
-	if(fp == NULL)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", file);
-		exit(EXIT_FAILURE);
-	}
-	res = fgets(sentence, 1024, fp);
-	for (i = 1 ; res != NULL ; i++ )
-	{
-		logic(sentence, i);
-		printf("SE: %s\n", sentence);
-		res = fgets(sentence, 1024, fp);
-	}
+	read(fd, content, 1024);
+	strings = count_sep(content,'\n');
+	logic(content, strings);
 	
 
 	return (0);
