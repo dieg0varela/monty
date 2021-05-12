@@ -26,7 +26,7 @@ void push(stack_t **stack, unsigned int line_number)
 	tmp = *stack;
 	if (!monty.data || !isNum(monty.data))
 	{
-		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+		fprintf(stderr, "L%i: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	new = malloc(sizeof(stack_t));
