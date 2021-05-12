@@ -14,7 +14,7 @@ void logic(char *sentence, int line)
 	int i = 0;
 	instruction_t arr[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
-		{NULL, NULL}
+		{"swap", swap}, {NULL, NULL}
 	};
 	if (sentence)
 		word = strtok(sentence, " \n");
