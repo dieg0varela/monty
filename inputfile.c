@@ -40,7 +40,7 @@ void logic(char *sentence, int line)
 	}
 	if(arr[i].opcode == NULL)
 	{
-		fprintf(stderr, "L%i: unknown instruction %s", line, word);
+		fprintf(stderr, "L%i: unknown instruction %s\n", line, word);
 			exit(EXIT_FAILURE);
 	}
 }
