@@ -37,6 +37,8 @@ void push(stack_t **stack, unsigned int line_number)
 		fclose(monty.fp);
 		exit(EXIT_FAILURE);
 	}
+	if (!head)
+		return;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
