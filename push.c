@@ -21,10 +21,9 @@ int isNum(char *num)
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = NULL, *tmp, *tmp2;
+	stack_t *new = NULL, *tmp;
 
 	tmp = *stack;
-	tmp2 = *stack;
 	if (!monty.data || !isNum(monty.data))
 	{
 		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);

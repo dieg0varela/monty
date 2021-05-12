@@ -1,17 +1,6 @@
 #include "monty.h"
 monty_t monty;
 
-/*int isNum(char *num)
-y{
-	int pos = 0;
-
-	for(pos = 0 ; num[pos] != '\0' ; pos++)
-	{
-		if(isdigit(num[pos]) == 0)
-			return (0);
-	}
-	return (1);
-}*/
 int count_sep(char *str, char sep)
 {
 	int count = 0, i = 0;
@@ -23,7 +12,8 @@ int count_sep(char *str, char sep)
 	}
 	return (count);
 }
-void logic(char *sentence, int line, stack_t *stack)
+
+void logic(char *sentence, int line)
 {
 	char *word;
 	int i = 0;
@@ -52,13 +42,22 @@ void logic(char *sentence, int line, stack_t *stack)
 			exit(EXIT_FAILURE);
 		}
 }
+
+/**
+ * main - Entry point
+ * @argc: argument count
+ * @argv: argument variables
+ *
+ * Return: success or failure.
+ *
+ */
+
 int main(int argc, char**argv)
 {
 	FILE *fp;
 	int i = 0;
 	char sentence[1024];
 	char *res, *file;
-	stack_t *stack = NULL;
 
 	if(argc != 2)
 	{
@@ -75,7 +74,7 @@ int main(int argc, char**argv)
 	res = fgets(sentence, 1024, fp);
 	for (i = 1 ; res != NULL ; i++ )
 	{
-		logic(sentence, i, stack);
+		logic(sentence, i);
 		res = fgets(sentence, 1024, fp);
 	}
 	free(res);
