@@ -20,13 +20,14 @@ void pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		temp = temp->next;
         while (temp)
 	{
-		if (!isascii(temp->n))
+		if (temp->n == 0)
+                        break;
+		if (isascii(temp->n))
 		{
-			break;
+			printf("%c\n", temp->n);
 		}
-		if (temp->n == '\0')
+		else
 			break;
-		printf("%c\n", temp->n);
 		temp = temp->prev;
 	}
 }
