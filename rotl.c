@@ -7,7 +7,7 @@
  *
  */
 
-void rotl(stack_t **stack, unsigned int line_numbe __attribute__((unused)))
+void rotl(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
 	stack_t *temp = NULL, *temp2 = NULL;
 	int n = 0;
@@ -28,7 +28,7 @@ void rotl(stack_t **stack, unsigned int line_numbe __attribute__((unused)))
 		temp2 = temp2->next;
 	}
 	while (temp2->prev)
-        {
+	{
 		n = temp2->n;
 		temp2->n = temp->n;
 		temp->n = n;
