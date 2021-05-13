@@ -4,6 +4,15 @@
 ## Introduction
 In this collaborate project between Diego Varela and Toshi Borgia we created a Monty Interpreter capable of processing Monty byte codes with varios opcodes.
 
+## Table of Contents
+-  [Introduction](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#description)
+-  [Getting Started](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#getting-started)
+	- [Task Requirments](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#task-requirements)
+	- [Instalation](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#instalation)
+-  [File Contents](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#file-contents)
+-  [Opcodes](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#builtins-commands)
+-  [**Authors**](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#authors)
+
 ## The Monty Language
 Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
 
@@ -46,18 +55,6 @@ pall This is the end of our program. Monty is awesome!$
 /monty$
 ```
 ## The monty program
-
-## Table of Contents
--  [Introduction](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#description)
--  [Getting Started](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#getting-started)
-	-  [Task Requirments](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#task-requirements)
-	- [Instalation](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#instalation)
-	-  [EXAMPLES](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#examples)
--  [File Contents](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#file-contents)
--  [Builtin Commands](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#builtins-commands)
--  [Extras](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#extras)
--  [**Authors**](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#authors)
-##
 -   Any outputs are printed on  `stdout`
 -   Any error message are printed on  `stderr`
 -  Usage:  `monty file`
@@ -74,3 +71,23 @@ pall This is the end of our program. Monty is awesome!$
     -   an error occured
 -   If you can’t malloc anymore, print the error message  `Error: malloc failed`, followed by a new line, and exit with status  `EXIT_FAILURE`.
 -   You have to use  `malloc`  and  `free`
+
+## File Contents
+This repository contains the following files:
+File | Description 
+------------ | ------------- 
+  **main.c** | main function for the interpreter 
+  **monty.h** | header file
+  **opcodes_0-2.c** | file contatinig all the functions from task 0 to 2
+  **opcodes_3-7.c** | file contatinig all the functions from task 3 to 7
+  **opcodes_8-13.c** | file contatinig all the functions from task 8 to 13
+  **opcodes_14.c** | file contatinig all the functions from task 14
+  **freedlist.c** | function that frees a double linked list
+  **test.m** | test file for the program
+  **bf folder** | Brainfuck language files are here
+  **monty** | compiled program for usage
+  **README.md** | README file
+
+## Authors
+- [**Diego**](https://github.com/dieg0varela) <2806@holbertonschool.com>
+- [**Toshi**](https://github.com/toshi-uy) <2785@holbertonschool.com>
