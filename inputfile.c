@@ -16,7 +16,7 @@ void logic(char *sentence, int line)
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{"swap", swap}, {"nop", nop}, {"add", add}, {"sub", sub},
 		{"mul", mul}, {"div", _div}, {"mod", mod}, {"pchar", pchar},
-		{NULL, NULL}
+		{"pstr", pstr}, {NULL, NULL}
 	};
 	if (sentence)
 		word = strtok(sentence, " \n");
