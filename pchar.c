@@ -23,7 +23,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 	while (temp)
 	{
-		if (temp->n < 31 && temp->n > 126)
+		if (temp->n < 0 && temp->n > 127)
 		{
 			fprintf(stderr, "L%i: can't pchar, value out of range\n", line_number);
 			free_dlistint(monty.stack);
