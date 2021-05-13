@@ -21,13 +21,16 @@ void pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
         while (temp)
 	{
 		if (temp->n == 0)
-                        break;
+		{
+			break;
+		}
 		if (isascii(temp->n))
 		{
-			printf("%c\n", temp->n);
+			printf("%c", temp->n);
 		}
 		else
 			break;
 		temp = temp->prev;
 	}
+	putchar(10);
 }
