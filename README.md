@@ -6,11 +6,11 @@ In this collaborate project between Diego Varela and Toshi Borgia we created a M
 
 ## Table of Contents
 -  [Introduction](https://github.com/dieg0varela/monty/blob/main/README.md#introduction)
--  [Getting Started](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#getting-started)
-	- [Compilation and Output](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#task-requirements)
-	- [History of the Monty Language](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#instalation)
+-  [Getting Started](https://github.com/dieg0varela/monty/blob/main/README.md#getting-started)
+	- [Compilation and Output](https://github.com/dieg0varela/monty/blob/main/README.md#compilation--output)
+	- [History of the Monty Language](https://github.com/dieg0varela/monty/blob/main/README.md#compilation--output)
 -  [File Contents](https://github.com/dieg0varela/monty/blob/main/README.md#file-contents)
--  [Opcodes](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#builtins-commands)
+-  [Opcodes](https://github.com/dieg0varela/monty/blob/main/README.md#opcode-commands)
 -  [**Authors**](https://github.com/dieg0varela/monty/blob/main/README.md#authors)
 ## Getting Started
 ## Compilation & Output
