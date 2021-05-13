@@ -24,7 +24,7 @@ void rotr(stack_t **stack, unsigned int line_number)
 	temp2 = (*stack)->next;
 	if (temp2->next == NULL)
 		swap(stack, line_number);
-	while (temp2->next)
+	while (temp2)
 	{
 		n = temp2->n;
 		temp2->n = temp->n;
