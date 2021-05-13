@@ -13,14 +13,14 @@ void _div(stack_t **stack, unsigned int line_number)
 
 	if (!stack || !*stack)
 	{
-		fprintf(stderr, "L%i: can't mul, stack too short\n", line_number);
+		fprintf(stderr, "L%i: can't div, stack too short\n", line_number);
 		free_dlistint(monty.stack);
 		fclose(monty.fp);
 		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%i: can't mul, stack too short\n", line_number);
+		fprintf(stderr, "L%i: can't div, stack too short\n", line_number);
 		free_dlistint(monty.stack);
 		fclose(monty.fp);
 		exit(EXIT_FAILURE);
