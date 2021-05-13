@@ -4,6 +4,7 @@
  * free_dlistint - function that frees a dlistint_t list
  * @head: pointer to list
  *
+ * Return: Nothing
  */
 
 void free_dlistint(stack_t *head)
