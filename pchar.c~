@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * pchar - prints the char at the top of the stack, followed by a new line.
+ * pall - pall prints all the values on the stack, starting from the top
  * @stack: pointer to stack
  * @line_number: line number
  *
@@ -30,6 +30,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 			fclose(monty.fp);
 			exit(EXIT_FAILURE);
 		}
+		temp->n = temp->n + '0';
 		printf("%c\n", temp->n);
 		temp = temp->prev;
 	}
