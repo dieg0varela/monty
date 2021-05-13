@@ -7,7 +7,7 @@
  *
  */
 
-void rotr(stack_t **stack, unsigned int line_numbe __attribute__((unused)))
+void rotr(stack_t **stack, unsigned int line_numbe)
 {
 	stack_t *temp = NULL, *temp2 = NULL;
 	int n = 0;
@@ -22,17 +22,14 @@ void rotr(stack_t **stack, unsigned int line_numbe __attribute__((unused)))
 	}
 	temp = *stack;
 	temp2 = (*stack)->next;
+	if (temp2->next == NULL)
+		swap(stack, line_number);
 	while (temp2->next)
 	{
+		n = temp2->n;
+                temp2->n = temp->n;
+                temp->n = n;
 		temp = temp->next;
 		temp2 = temp2->next;
-	}
-	while (temp2->prev)
-        {
-		n = temp2->n;
-		temp2->n = temp->n;
-		temp->n = n;
-		temp = temp->prev;
-		temp2 = temp2->prev;
 	}
 }
