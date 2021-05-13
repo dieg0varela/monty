@@ -5,13 +5,28 @@
 In this collaborate project between Diego Varela and Toshi Borgia we created a Monty Interpreter capable of processing Monty byte codes with varios opcodes.
 
 ## Table of Contents
--  [Introduction](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#description)
+-  [Introduction](https://github.com/dieg0varela/monty/blob/main/README.md#introduction)
 -  [Getting Started](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#getting-started)
-	- [Task Requirments](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#task-requirements)
-	- [Instalation](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#instalation)
--  [File Contents](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#file-contents)
+	- [Compilation and Output](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#task-requirements)
+	- [History of the Monty Language](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#instalation)
+-  [File Contents](https://github.com/dieg0varela/monty/blob/main/README.md#file-contents)
 -  [Opcodes](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#builtins-commands)
--  [**Authors**](https://github.com/DiegoSusviela/simple_shell/blob/main/README.md#authors)
+-  [**Authors**](https://github.com/dieg0varela/monty/blob/main/README.md#authors)
+## Getting Started
+## Compilation & Output
+-   If you wish to install this you will need to have Linux OS or a virtual machine, and can run Gcc >= 4.8.4.
+-   `git clone https://github.com/dieg0varela/monty.git`
+-   `$ cd monty
+-   Your code will be compiled this way:
+
+```
+$ gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+
+```
+Then just run the program with the .m file, for example:
+`$ ./monty test.m`
+-   Any output would be printed on  `stdout`
+-   Any error message would be printed on  `stderr`
 
 ## The Monty Language
 Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
@@ -55,8 +70,6 @@ pall This is the end of our program. Monty is awesome!$
 /monty$
 ```
 ## The monty program
--   Any outputs are printed on  `stdout`
--   Any error message are printed on  `stderr`
 -  Usage:  `monty file`
     -   where  `file`  is the path to the file containing Monty byte code
 -   If the user does not give any file or more than one argument to your program, print the error message  `USAGE: monty file`, followed by a new line, and exit with the status  `EXIT_FAILURE`
@@ -87,6 +100,28 @@ File | Description
   **bf folder** | Brainfuck language files are here
   **monty** | compiled program for usage
   **README.md** | README file
+  
+## Opcode Commands
+
+**Opcode** | **Description**
+------------ | ------------- 
+push | pushes an element to the stack.
+pall | prints all the values on the stack, starting from the top of the stack.
+pint | prints the value at the top of the stack, followed by a new line.
+pop | removes the top element of the stack.
+swap | swaps the top two elements of the stack.
+add | adds the top two elements of the stack.
+nop | doesn’t do anything.
+sub | subtracts the top element of the stack from the second top element of the stack.
+div | divides the second top element of the stack by the top element of the stack.
+mul | multiplies the second top element of the stack with the top element of the stack.
+mod | computes the rest of the division of the second top element of the stack by the top element of the stack.
+comments | When the first non-space character of a line is #, treat this line as a comment (don’t do anything).
+pchar | prints the char at the top of the stack, followed by a new line.
+pstr | prints the string starting at the top of the stack, followed by a new line.
+rotl | rotates the stack to the top.
+rotl | rotates the stack to the bottom.
+
 
 ## Authors
 - [**Diego**](https://github.com/dieg0varela) <2806@holbertonschool.com>
