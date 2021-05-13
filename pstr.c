@@ -13,12 +13,12 @@ void pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
 
 	if (!stack || !*stack)
 	{
-		putchar(10);
+		return;
 	}
 	temp = *stack;
 	while (temp->next != NULL)
 		temp = temp->next;
-        while (temp)
+	while (temp)
 	{
 		if (temp->n == 0)
 		{
