@@ -21,12 +21,13 @@ void pchar(stack_t **stack, unsigned int line_number)
 	temp = *stack;
 	while (temp->next != NULL)
 		temp = temp->next;
-	if (temp->n < 33 && temp->n > 126)
+	if (isascii(temp->n))
+		printf("%c\n", temp->n);
+	else
 	{
 		fprintf(stderr, "L%i: can't pchar, value out of range\n", line_number);
 		free_dlistint(monty.stack);
 		fclose(monty.fp);
 		exit(EXIT_FAILURE);
 	}
-	printf("%c\n", temp->n);
 }
