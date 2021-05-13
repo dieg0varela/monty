@@ -12,6 +12,8 @@ int isNum(char *num)
 
 	for (pos = 0 ; num[pos] != '\0' ; pos++)
 	{
+		if (num[0] == '-')
+			continue;
 		if (isdigit(num[pos]) == 0)
 			return (0);
 	}
