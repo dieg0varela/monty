@@ -48,7 +48,7 @@ pall$
 /monty$
 ```
 
-Monty byte code files can contain blank lines (empty or made of spaces only, and any additional text after the opcode or its required argument is not taken into account:
+Monty byte code files can contain blank lines (empty or made of spaces only), and any additional text after the opcode or its required argument is not taken into account:
 
 ```
 /monty$ cat -e bytecodes/001.m
