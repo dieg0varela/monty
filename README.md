@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/93Rf9Nm.png" width=100%>
 
 ## Introduction
-In this collaborate project between Diego Varela and Toshi Borgia we created a Monty Interpreter capable of processing Monty byte codes with varios opcodes.
+In this collaborate project between Diego Varela and Toshi Borgia we created a Monty Interpreter capable of processing Monty byte codes with various opcodes.
 
 ## Table of Contents
 -  [Introduction](https://github.com/dieg0varela/monty/blob/main/README.md#introduction)
